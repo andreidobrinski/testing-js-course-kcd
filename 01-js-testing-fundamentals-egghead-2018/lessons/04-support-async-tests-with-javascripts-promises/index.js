@@ -14,6 +14,7 @@ test('subtractAsync subtracts numbers asynchronously', async () => {
 
 async function test(title, callback) {
   try {
+    // adding await here works for both async and sync
     await callback()
     console.log(`✓ ${title}`)
   } catch (error) {
