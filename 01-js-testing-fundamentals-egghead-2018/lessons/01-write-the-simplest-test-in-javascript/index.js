@@ -1,22 +1,18 @@
 const {sum, subtract} = require('./math')
 
-let result, expected
-
 console.log("Adjust math.js to pass the test.")
 
-function sumTest() {
-  result = sum(3, 7)
-  expected = 10
+test('sum adds numbers', () => {
+  const result = sum(3, 7)
+  const expected = 10
   expect(result).toBe(expected)
-}
-test('sum adds numbers', sumTest)
+})
 
-function subtractTest() {
-  result = subtract(7, 3)
-  expected = 4
+test('subtract subtracts numbers', () => {
+  const result = subtract(7, 3)
+  const expected = 4
   expect(result).toBe(expected)
-}
-test('subtract subtracts numbers', subtractTest)
+})
 
 function test(title, callback) {
   try {
