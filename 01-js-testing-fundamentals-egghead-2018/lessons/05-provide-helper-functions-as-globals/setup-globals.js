@@ -18,5 +18,8 @@ function expect(actual) {
   }
 }
 
+// allows functions to be used globally
+// works with script:
+// node --require ./setup-globals lessons/globals.js
 global.test = test
 global.expect = expect
