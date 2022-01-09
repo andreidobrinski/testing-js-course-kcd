@@ -1,3 +1,4 @@
+// points to path of no framework mocks
 require('../__no-framework-mocks__/utils') // prime the cache
 const utilsPath = require.resolve('../utils')
 const mockUtilsPath = require.resolve('../__no-framework-mocks__/utils')
