@@ -7,3 +7,6 @@
 "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\"",
 - ignores paths that are in gitignore
 - write: allows pretter to write (update) the files in the regex
+
+prettier.io/playground
+- use to configure prettier rules with a REPL
