@@ -1,6 +1,6 @@
 # Notes
 
-## package.json
+package.json
 "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
 - ignore path .gitignore: uses gitignore file to also ignore linting
 
@@ -16,3 +16,7 @@ VSCode settings for prettier
 "editor.defaultFormatter": "esbenp.prettier-vscode",
 "editor.formatOnSave": true,
 ```
+
+In eslintrc, "eslint-config-prettier"
+- helps for eslint to work with prettier
+- install as a dev dependency
