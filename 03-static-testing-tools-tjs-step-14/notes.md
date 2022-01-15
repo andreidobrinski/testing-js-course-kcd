@@ -25,3 +25,7 @@ package json
 "check-format": "npm run prettier -- --list-different",
 "validate": "npm-run-all --parallel check-types check-format lint build"
 - runs all in parallel
+
+TypeScript
+- used in this project but only to check types
+- not using ts compiler
