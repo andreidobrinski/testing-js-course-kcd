@@ -2,8 +2,10 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2019,
+    // module rather than script
     "sourceType": "module",
     "ecmaFeatures": {
+      // parsing for React JSX
       "jsx": true
     },
     "project": "./tsconfig.json"
@@ -17,6 +19,13 @@
     "eslint-config-prettier/@typescript-eslint"
   ],
   "rules": {
+    // checks for typeof typos
+    "valid-typeof": "error", // "warn will not fail script
+    "no-unsafe-negation": "error",
+    "no-unused-vars": "error",
+    "no-unexpected-multiline": "error",
+    "no-undef": "error",
+    // so that you never need to define 'use strict'
     "strict": ["error", "never"]
   },
   "env": {
