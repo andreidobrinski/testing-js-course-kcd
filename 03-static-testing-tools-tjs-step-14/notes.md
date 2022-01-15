@@ -29,3 +29,6 @@ package json
 TypeScript
 - used in this project but only to check types
 - not using ts compiler
+
+lint-staged
+- automatically formats all staged files on commit
