@@ -32,3 +32,7 @@ TypeScript
 
 lint-staged
 - automatically formats all staged files on commit
+
+npm-run-all
+- runs all scripts in parallel
+"validate": "npm-run-all --parallel check-types check-format lint build"
