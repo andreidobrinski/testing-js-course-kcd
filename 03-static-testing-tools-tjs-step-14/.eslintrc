@@ -19,12 +19,17 @@
     "eslint-config-prettier/@typescript-eslint"
   ],
   "rules": {
-    // checks for typeof typos
-    "valid-typeof": "error", // "warn will not fail script
-    "no-unsafe-negation": "error",
-    "no-unused-vars": "error",
-    "no-unexpected-multiline": "error",
-    "no-undef": "error",
+    /*
+      all rules below are covered by eslint:recommended
+
+      // checks for typeof typos
+      "valid-typeof": "error", // "warn will not fail script
+      "no-unsafe-negation": "error",
+      "no-unused-vars": "error",
+      "no-unexpected-multiline": "error",
+      "no-undef": "error",
+    */
+    
     // so that you never need to define 'use strict'
     "strict": ["error", "never"]
   },
