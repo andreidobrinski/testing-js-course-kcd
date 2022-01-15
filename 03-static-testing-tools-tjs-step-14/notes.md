@@ -20,3 +20,8 @@ VSCode settings for prettier
 In eslintrc, "eslint-config-prettier"
 - helps for eslint to work with prettier
 - install as a dev dependency
+
+package json
+"check-format": "npm run prettier -- --list-different",
+"validate": "npm-run-all --parallel check-types check-format lint build"
+- runs all in parallel
