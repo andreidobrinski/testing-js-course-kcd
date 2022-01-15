@@ -10,3 +10,9 @@
 
 prettier.io/playground
 - use to configure prettier rules with a REPL
+
+VSCode settings for prettier
+```
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"editor.formatOnSave": true,
+```
