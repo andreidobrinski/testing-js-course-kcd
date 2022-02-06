@@ -20,6 +20,8 @@ $.fn.countify = function countify() {
 // tests:
 test('counter increments', () => {
   const div = document.createElement('div')
+  // treating the library as a jQuery plugin
+  // no need to create a render method
   $(div).countify()
   const {getByText} = getQueriesForElement(div)
   const counter = getByText('0')
