@@ -21,6 +21,7 @@ function render(ui: Constructor<WidgetBase>) {
   const container = document.createElement('div')
   const Projector = ProjectorMixin(ui)
   const projector = new Projector()
+  // to make tests easier to work with
   projector.async = false
   projector.append(container)
   return {
