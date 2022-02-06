@@ -33,6 +33,7 @@ function render(Component) {
 test('counter increments', async () => {
   const {getByText} = render(Counter)
   const counter = getByText('0')
+  // need async util because vue does not synchronously update on state changes
   await userEventAsync.click(counter)
   expect(counter).toHaveTextContent('1')
 
