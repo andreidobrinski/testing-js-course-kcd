@@ -36,6 +36,8 @@ async function render({
 test('renders a counter', async () => {
   const {getByText} = await render({state, view, actions})
   const counter = getByText('0')
+  // need to use async for click
+  // hyperapp updates on the next tick of the event loop
   await userEventAsync.click(counter)
   expect(counter).toHaveTextContent('1')
 
