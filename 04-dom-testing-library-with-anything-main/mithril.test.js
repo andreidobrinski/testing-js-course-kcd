@@ -20,7 +20,9 @@ const Counter = () => {
 }
 
 function render(component) {
+  // create a dom node to query
   const container = document.createElement('div')
+  // mount to dom node
   m.mount(container, component)
   return {
     container,
@@ -32,7 +34,9 @@ function render(component) {
 test('counter increments', async () => {
   const {getByText} = render(Counter)
   const counter = getByText('0')
+  // cant use userEventAsycn utility
   userEvent.click(counter)
+  // need to use waitFor with callback, so it can continuously check assertion until it passes
   await waitFor(() => expect(counter).toHaveTextContent('1'))
 
   userEvent.click(counter)
