@@ -27,6 +27,7 @@ function render(component: any) {
     providers: [{provide: ComponentFixtureAutoDetect, useValue: true}],
   }).compileComponents()
 
+  // get a DOM node to query
   const fixture = TestBed.createComponent(component)
   const container = fixture.debugElement.nativeElement
 
