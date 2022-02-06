@@ -14,14 +14,17 @@ function Counter() {
   )
 }
 
+// create similar render fn as from react testing library
 function render(ui) {
   const container = document.createElement('div')
   ReactDOM.render(ui, container)
+  // react binds listeners to document.body, so we need to append the container to the document
   document.body.appendChild(container)
   return {
     ...getQueriesForElement(container),
     container,
     cleanup() {
+      // optimizations for cleanup
       ReactDOM.unmountComponentAtNode(container)
       document.body.removeChild(container)
     },
@@ -36,5 +39,6 @@ test('renders a counter', () => {
 
   userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
+  // cleans up document.body between running tests
   cleanup()
 })
