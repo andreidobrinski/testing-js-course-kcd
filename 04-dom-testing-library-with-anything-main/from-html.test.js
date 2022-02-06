@@ -33,6 +33,8 @@ function render(FromHtmlClass) {
   const instance = new FromHtmlClass()
   const container = document.createElement('div')
   instance.mount(container)
+  // need to return container and instance
+  // not recommended to use instance directly as it's more of an implementation detail
   return {
     container,
     instance,
