@@ -19,6 +19,8 @@ function render(html, config) {
   const container = document.createElement('div')
   container.innerHTML = html
   angular.bootstrap(container, config.modules)
+  // return object for convenience
+  // in case use wants to make queries on the container
   return {
     container,
     ...getQueriesForElement(container),
