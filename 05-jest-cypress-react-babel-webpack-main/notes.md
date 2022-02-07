@@ -78,3 +78,10 @@ Testing Library Expect Assertion Extension
 - in jest config: `setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],`
 - allows for more expect assertions, such as `.toHaveTextContent`
 - allows for better error messages as a result
+
+Jest Watch
+- in package.json
+```
+"test:watch": "jest --watch"
+```
+- auto runs changed tests on save
