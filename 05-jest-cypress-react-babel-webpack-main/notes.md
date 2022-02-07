@@ -85,3 +85,13 @@ Jest Watch
 "test:watch": "jest --watch"
 ```
 - auto runs changed tests on save
+
+Test Debugger
+- in package.json
+```
+"test:debug": "node --inspect-brk ./node-modules/jest/bin/jest.js --runInBand --watch"
+```
+- `runInBand` runs test in the same node process. Jest runs them in parallel by default
+- in the browser, go to `chrome://inspect`
+- click inspect
+- opens chrome devtools
