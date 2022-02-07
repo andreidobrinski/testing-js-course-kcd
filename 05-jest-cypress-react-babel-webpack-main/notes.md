@@ -51,3 +51,8 @@ module.exports = {
 ```
 - `shared` is treated as a module directory
 - import as if it's coming from node modules
+
+Testing Library Expect Assertion Extension
+- in jest config: `setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],`
+- allows for more expect assertions, such as `.toHaveTextContent`
+- allows for better error messages as a result
