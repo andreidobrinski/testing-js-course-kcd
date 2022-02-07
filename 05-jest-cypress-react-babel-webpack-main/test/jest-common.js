@@ -9,6 +9,7 @@ module.exports = {
     path.join(__dirname, '../src'),
     'shared',
     __dirname,
+    path.join(__dirname, '../test')
   ],
   testPathIgnorePatterns: ['<rootDir>/server/'],
   moduleNameMapper: {

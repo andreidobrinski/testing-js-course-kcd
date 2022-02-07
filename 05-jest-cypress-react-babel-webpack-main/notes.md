@@ -51,6 +51,28 @@ module.exports = {
 ```
 - `shared` is treated as a module directory
 - import as if it's coming from node modules
+- can also add `path.join(__dirname, '../test')`, which allows everything in the `test` folder to be imported as a node module as well
+  - perfect place to store a custom `render` provider wrapper
+- need to `npm install -D eslint-import-resolver-jest`
+- in eslintrc:
+  - ```
+  {
+      files: ['**/__tests__/**'],
+      settings: {
+        'import/resolver': {
+          jest: {
+            jestConfigFile: path.join(__dirname, './jest.config.js'),
+          },
+        },
+      },
+    },
+  ```
+- in js/tsconfig:
+  - ```
+  "paths": {
+      "*": ["src/*", "src/shared/*", "test/*"]
+    }
+  ```
 
 Testing Library Expect Assertion Extension
 - in jest config: `setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],`
