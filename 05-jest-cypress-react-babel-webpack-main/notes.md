@@ -23,3 +23,4 @@ moduleNameMapper: {
     '\\.css$': require.resolve('./style-mock.js')
 }
 ```
+- add `'\\.module\\.css$': 'identity-obj-proxy',` above the .css require to get classnames from css modules
