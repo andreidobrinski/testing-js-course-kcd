@@ -15,3 +15,11 @@ Jest Setup
 - jest picks up .babelrc automatically
 
 - Add env files for jest.client, jest.server, jest.common etc
+
+Mock styles for CSS Modules
+- in jest config
+```
+moduleNameMapper: {
+    '\\.css$': require.resolve('./style-mock.js')
+}
+```
