@@ -28,3 +28,8 @@ moduleNameMapper: {
 - Jest assertion `.toMatchInlineSnapshot` keeps the snapshot as part of the test file
 - Keeps the snapshot inline, encourages dev to keep the snapshot smaller
 - Must use this with prettier
+
+Jest Emotion
+- aka a snapshot serializer
+- `npm install -D jest-emotion`
+- in jest config: `snapshotSerializers: ['@emotion/jest/serializer'],`
