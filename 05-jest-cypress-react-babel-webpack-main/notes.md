@@ -13,3 +13,5 @@ Jest Setup
   - `const isTest = String(process.env.NODE_ENV) === 'test'`
   - `['@babel/preset-env', {modules: isTest ? 'commonjs' : false}],`
 - jest picks up .babelrc automatically
+
+- Add env files for jest.client, jest.server, jest.common etc
