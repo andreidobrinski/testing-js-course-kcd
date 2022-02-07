@@ -33,3 +33,21 @@ Jest Emotion
 - aka a snapshot serializer
 - `npm install -D jest-emotion`
 - in jest config: `snapshotSerializers: ['@emotion/jest/serializer'],`
+
+Module Resolution
+- to use shared modules in jest config
+```
+const path = require('path')
+
+module.exports = {
+  rootDir: path.join(__dirname, '..'),
+  moduleDirectories: [
+    'node_modules',
+    path.join(__dirname, '../src'),
+    'shared',
+    __dirname,
+  ],
+}
+```
+- `shared` is treated as a module directory
+- import as if it's coming from node modules
