@@ -24,3 +24,7 @@ moduleNameMapper: {
 }
 ```
 - add `'\\.module\\.css$': 'identity-obj-proxy',` above the .css require to get classnames from css modules
+
+- Jest assertion `.toMatchInlineSnapshot` keeps the snapshot as part of the test file
+- Keeps the snapshot inline, encourages dev to keep the snapshot smaller
+- Must use this with prettier
