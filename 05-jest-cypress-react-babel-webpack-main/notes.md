@@ -189,3 +189,7 @@ watchPlugins: [
 ],
 ```
 - press `P` in the jest watch UI to choose which project
+
+Typeahead for jest pattern matching regex
+- `npm install -D jest-watch-typeahead`
+- add 'typeahead' plugins (above)
