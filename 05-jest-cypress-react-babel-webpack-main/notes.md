@@ -110,3 +110,9 @@ collectCoverageFrom: [
   ],
 ```
 - add `coverage` to .gitignore
+
+Babel Plugin Istanbul
+- analyzes code coverage by instrumenting code
+- doesn't actually run your code
+- use `/* istanbul-ignore-next */` to ignore code from test coverage
+- not recommended to use
