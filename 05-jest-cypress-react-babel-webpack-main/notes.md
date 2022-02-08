@@ -95,3 +95,18 @@ Test Debugger
 - in the browser, go to `chrome://inspect`
 - click inspect
 - opens chrome devtools
+
+Test Coverage
+- `jest --coverage`
+- useful for CI
+- can be opened in the browser with: `open coverage/lcov-report/index.html`
+- to choose what goes into the coverage report, in th jest config:
+```
+collectCoverageFrom: [
+  '**/src/**/*.js',
+  '!**/__tests__/**',
+  '!**/__server_tests__/**',
+  '!**/node_modules/**',
+  ],
+```
+- add `coverage` to .gitignore
