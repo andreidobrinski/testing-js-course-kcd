@@ -116,3 +116,24 @@ Babel Plugin Istanbul
 - doesn't actually run your code
 - use `/* istanbul-ignore-next */` to ignore code from test coverage
 - not recommended to use
+
+Code Coverage Threshold
+- in the jest config:
+```
+coverageThreshold: {
+    global: {
+      statements: 15,
+      branches: 10,
+      functions: 15,
+      lines: 15,
+    },
+    './src/shared/utils.js': {
+      statements: 100,
+      branches: 80,
+      functions: 100,
+      lines: 100,
+    },
+  },
+```
+- numbers mean the percent coverage to set as the threshold
+- utils can have their own coverage threshold, separate from the global
