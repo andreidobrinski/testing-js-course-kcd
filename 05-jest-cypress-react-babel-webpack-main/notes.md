@@ -171,3 +171,9 @@ projects: [
 ```
 - no need for config flags in test scripts
 - add a `displayName` to config files to show a label in the test run output
+
+Jest Runner ESLint
+- add jest.lint.js file
+- add ignore path gitignore in jest-runner-eslint in package.json
+- allows us to use run eslint through jest
+- add lint to jest config projects
