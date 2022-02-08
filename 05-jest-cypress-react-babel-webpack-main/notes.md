@@ -177,3 +177,15 @@ Jest Runner ESLint
 - add ignore path gitignore in jest-runner-eslint in package.json
 - allows us to use run eslint through jest
 - add lint to jest config projects
+
+Watch specific projects in Jest
+- `npm install -D jest-watch-select-projects`
+- in jest config (common)
+```
+watchPlugins: [
+  'jest-watch-typeahead/filename',
+  'jest-watch-typeahead/testname',
+  'jest-watch-select-projects',
+],
+```
+- press `P` in the jest watch UI to choose which project
