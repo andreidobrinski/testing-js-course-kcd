@@ -137,3 +137,11 @@ coverageThreshold: {
 ```
 - numbers mean the percent coverage to set as the threshold
 - utils can have their own coverage threshold, separate from the global
+
+Code coverage with codecov
+- in the travis.yml
+```
+after_script: npx codecov@3
+```
+- uploads the coverage folder to codecov
+- shows a dashboard with coverage reports
