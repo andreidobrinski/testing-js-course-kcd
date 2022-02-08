@@ -156,3 +156,18 @@ Is CI CLI
 ```
 - allows you to use `npm t` to run the watch script locally and the coverage script on CI
 - checks for env var CI: `CI=1`
+
+Jest Config flag
+- `jest --config test/server.js` to run the server test config
+- can have shared common config as well as server-only config
+- can combine test envs into one coverage report. In jest config:
+```
+projects: [
+    './test/jest.lint.js',
+    './test/jest.client.js',
+    './test/jest.server.js',
+    './server',
+  ],
+```
+- no need for config flags in test scripts
+- add a `displayName` to config files to show a label in the test run output
