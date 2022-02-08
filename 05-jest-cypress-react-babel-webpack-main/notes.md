@@ -145,3 +145,14 @@ after_script: npx codecov@3
 ```
 - uploads the coverage folder to codecov
 - shows a dashboard with coverage reports
+
+Is CI CLI
+- `npm install -D is-ci-cli`
+- in the package.json:
+```
+"test": "is-ci \"test:coverage\" \"test:watch\"",
+"test:coverage": "jest --coverage",
+"test:watch": "jest --watch"
+```
+- allows you to use `npm t` to run the watch script locally and the coverage script on CI
+- checks for env var CI: `CI=1`
