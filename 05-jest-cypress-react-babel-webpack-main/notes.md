@@ -193,3 +193,15 @@ watchPlugins: [
 Typeahead for jest pattern matching regex
 - `npm install -D jest-watch-typeahead`
 - add 'typeahead' plugins (above)
+
+Husky & Lint Stated
+- install as dev dependencies
+- pre commit hook: `lint staged && npm run build`
+- lint staged config:
+```
+"**/*.+(js|json|css|html|md)": [
+  "prettier",
+  "jest --findRelatedTests",
+  "git add",
+]
+```
