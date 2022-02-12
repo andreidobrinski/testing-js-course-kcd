@@ -3,6 +3,7 @@ import {render} from '@testing-library/react'
 import {reportError as mockReportError} from '../api'
 import {ErrorBoundary} from '../error-boundary'
 
+// default mock finds all functions in the module and replaces them with jest.fn
 jest.mock('../api')
 
 afterEach(() => {
@@ -19,18 +20,21 @@ function Bomb({shouldThrow}) {
 
 test('calls reportError and renders that there was a problem', () => {
   mockReportError.mockResolvedValueOnce({success: true})
+  // test component will not throw
   const {rerender} = render(
     <ErrorBoundary>
       <Bomb />
     </ErrorBoundary>,
   )
 
+  // test component will throw
   rerender(
     <ErrorBoundary>
       <Bomb shouldThrow={true} />
     </ErrorBoundary>,
   )
 
+  // mock error and info objects
   const error = expect.any(Error)
   const info = {componentStack: expect.stringContaining('Bomb')}
   expect(mockReportError).toHaveBeenCalledWith(error, info)
