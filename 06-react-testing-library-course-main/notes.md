@@ -10,3 +10,9 @@ Changes since last video recording
 - prefer `BrowserRouter` and `window.history.pushState` over
   `createMemoryHistory`
 - prefer `MSW` for mocking HTTP requests
+
+Debug
+
+- destructure `debug` from the render method
+- call `debug()` to see the entire DOM in the console
+- pass an arg, `debug(elem)` to see just the `elem`
