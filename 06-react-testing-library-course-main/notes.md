@@ -16,3 +16,10 @@ Debug
 - destructure `debug` from the render method
 - call `debug()` to see the entire DOM in the console
 - pass an arg, `debug(elem)` to see just the `elem`
+
+Rerender
+
+- rerenders the same component
+- can rerender new props
+- renders to the exact same container as the original UI
+- allows to test situations where props are updated
