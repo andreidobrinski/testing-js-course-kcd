@@ -23,3 +23,10 @@ Rerender
 - can rerender new props
 - renders to the exact same container as the original UI
 - allows to test situations where props are updated
+
+queryByRole
+
+- will return null if element isn't rendered
+- used for testing `expect(queryByRole('role)).toBeNull()`
+- queries with get, like `getByRole` will throw an error if the element isn't
+  rendered
