@@ -30,3 +30,14 @@ queryByRole
 - used for testing `expect(queryByRole('role)).toBeNull()`
 - queries with get, like `getByRole` will throw an error if the element isn't
   rendered
+
+a11y testing
+
+```
+import 'jest-axe/extend-expect'
+import { axe, toHaveNoViolations } from 'jest-axe'
+
+const { container } = render(<Form />)
+const results = await axe(container)
+expect(results).toHaveNoViolations()
+```
