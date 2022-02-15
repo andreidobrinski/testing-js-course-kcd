@@ -47,3 +47,22 @@ Mocking API calls
 - when mocking an API call, always make sure to
 - test that the mocked fn was called with the correct arg
 - test that the mock was only called once
+
+MSW
+
+- mocks window.fetch or API call
+- preferable to mocking out the API component from your codebase, as that would
+  still leave some code untested
+- mocking with MSW:
+
+```
+import {rest} from 'msw'
+import {setupServer} from 'msw/node'
+
+// intercepts and mocks http request
+const server = setupServer(
+  rest.post('/greeting', (req, res, ctx) => {
+    return res(ctx.json({data: {greeting: `Hello ${req.body.subject}`}}))
+  }),
+)
+```
