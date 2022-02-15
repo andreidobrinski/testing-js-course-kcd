@@ -5,11 +5,13 @@ import {ErrorBoundary} from '../error-boundary'
 
 jest.mock('../api')
 
+// removes expected console.errors from cluttering up the terminal
 beforeAll(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 })
 
 afterAll(() => {
+  // returns console.error to its original implementation
   console.error.mockRestore()
 })
 
@@ -44,5 +46,6 @@ test('calls reportError and renders that there was a problem', () => {
   expect(mockReportError).toHaveBeenCalledWith(error, info)
   expect(mockReportError).toHaveBeenCalledTimes(1)
 
+  // to know that additional unexpected errors are not being called
   expect(console.error).toHaveBeenCalledTimes(2)
 })
