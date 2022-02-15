@@ -60,6 +60,7 @@ test('renders a form with title, content, tags, and a submit button', async () =
 
 test('renders an error message from the server', async () => {
   const testError = 'test error'
+  // mock error state to be tested
   mockSavePost.mockRejectedValueOnce({data: {error: testError}})
   const fakeUser = userBuilder()
   render(<Editor user={fakeUser} />)
@@ -67,7 +68,9 @@ test('renders an error message from the server', async () => {
 
   userEvent.click(submitButton)
 
+  // mocked error surfaces
   const postError = await screen.findByRole('alert')
   expect(postError).toHaveTextContent(testError)
+  // test that they can try it again
   expect(submitButton).toBeEnabled()
 })
