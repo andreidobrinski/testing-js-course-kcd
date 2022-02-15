@@ -41,3 +41,9 @@ const { container } = render(<Form />)
 const results = await axe(container)
 expect(results).toHaveNoViolations()
 ```
+
+Mocking API calls
+
+- when mocking an API call, always make sure to
+- test that the mocked fn was called with the correct arg
+- test that the mock was only called once
