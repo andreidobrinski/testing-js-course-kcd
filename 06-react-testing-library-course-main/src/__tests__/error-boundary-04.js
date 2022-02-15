@@ -28,6 +28,7 @@ function Bomb({shouldThrow}) {
 
 test('calls reportError and renders that there was a problem', () => {
   mockReportError.mockResolvedValueOnce({success: true})
+  // wrapper syntax avoids having to render and rerender the Bomb in an error boundary as a parent
   const {rerender} = render(<Bomb />, {wrapper: ErrorBoundary})
 
   rerender(<Bomb shouldThrow={true} />)
@@ -46,6 +47,7 @@ test('calls reportError and renders that there was a problem', () => {
   console.error.mockClear()
   mockReportError.mockClear()
 
+  // no need to wrap with ErrorBoundary
   rerender(<Bomb />)
 
   userEvent.click(screen.getByText(/try again/i))
