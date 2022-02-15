@@ -3,7 +3,9 @@ import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import {HiddenMessage} from '../hidden-message'
 
+// mock animation library to save testing run time
 jest.mock('react-transition-group', () => {
+  // props.in is what tells the component to render its children
   return {
     CSSTransition: (props) => (props.in ? props.children : null),
   }
