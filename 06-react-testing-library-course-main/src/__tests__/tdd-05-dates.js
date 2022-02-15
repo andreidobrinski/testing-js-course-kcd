@@ -26,6 +26,7 @@ test('renders a form with title, content, tags, and a submit button', async () =
     content: 'Test content',
     tags: ['tag1', 'tag2'],
   }
+  // create preDate before test
   const preDate = new Date().getTime()
 
   screen.getByLabelText(/title/i).value = fakePost.title
@@ -39,13 +40,15 @@ test('renders a form with title, content, tags, and a submit button', async () =
 
   expect(mockSavePost).toHaveBeenCalledWith({
     ...fakePost,
-    date: expect.any(String),
+    date: expect.any(String), // expect any string
     authorId: fakeUser.id,
   })
   expect(mockSavePost).toHaveBeenCalledTimes(1)
 
+  // create postDate after
   const postDate = new Date().getTime()
   const date = new Date(mockSavePost.mock.calls[0][0].date).getTime()
+  // check that date is between pre and post date
   expect(date).toBeGreaterThanOrEqual(preDate)
   expect(date).toBeLessThanOrEqual(postDate)
 

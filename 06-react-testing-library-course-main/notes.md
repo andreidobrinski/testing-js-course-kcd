@@ -66,3 +66,26 @@ const server = setupServer(
   }),
 )
 ```
+
+Testing Dates
+
+- create a preDate before the test
+- create a postDate after the test
+- check that actual date was between the two dates
+
+```
+const preDate = new Date().getTime()
+
+expect(mockSavePost).toHaveBeenCalledWith({
+  ...fakePost,
+  date: expect.any(String), // expect any string
+  authorId: fakeUser.id,
+})
+
+// create postDate after
+const postDate = new Date().getTime()
+const date = new Date(mockSavePost.mock.calls[0][0].date).getTime()
+// check that date is between pre and post date
+expect(date).toBeGreaterThanOrEqual(preDate)
+expect(date).toBeLessThanOrEqual(postDate)
+```
