@@ -51,9 +51,11 @@ test('calls reportError and renders that there was a problem', () => {
     `"There was a problem."`,
   )
 
+  // resets the calls to zero but leaves mock implementation intact
   console.error.mockClear()
   mockReportError.mockClear()
 
+  // rerender without the error
   rerender(
     <ErrorBoundary>
       <Bomb />
