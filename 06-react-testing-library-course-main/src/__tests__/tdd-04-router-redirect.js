@@ -5,6 +5,7 @@ import {Redirect as MockRedirect} from 'react-router'
 import {savePost as mockSavePost} from '../api'
 import {Editor} from '../post-editor-04-router-redirect'
 
+// mock for Redirect
 jest.mock('react-router', () => {
   return {
     Redirect: jest.fn(() => null),
@@ -42,4 +43,6 @@ test('renders a form with title, content, tags, and a submit button', async () =
   expect(mockSavePost).toHaveBeenCalledTimes(1)
 
   await waitFor(() => expect(MockRedirect).toHaveBeenCalledWith({to: '/'}, {}))
+  // got rid of MockRedirect.toHaveBeenCalledTimes
+  // React can call a component many times and testing how many times a component was called is testing an implementation detail
 })
