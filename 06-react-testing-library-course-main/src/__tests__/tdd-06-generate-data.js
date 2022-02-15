@@ -17,6 +17,7 @@ afterEach(() => {
   jest.clearAllMocks()
 })
 
+// prefer generated fake data to show that there is nothing significant about fake strings
 const postBuilder = build('Post').fields({
   title: fake((f) => f.lorem.words()),
   content: fake((f) => f.lorem.paragraphs().replace(/\r/g, '')),
