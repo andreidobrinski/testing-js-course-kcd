@@ -5,6 +5,8 @@ import {useCounter} from '../use-counter'
 function setup({initialProps} = {}) {
   const result = {}
   function TestComponent(props) {
+    // use .current to keep referential equality
+    // otherwise result would be reassigned every time the component is rerendered
     result.current = useCounter(props)
     return null
   }
