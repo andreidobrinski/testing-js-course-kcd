@@ -22,6 +22,7 @@ function render(
   }
   return {
     ...rtlRender(ui, {
+      // rtl will return a rerender utility with this approach
       wrapper: Wrapper,
       ...renderOptions,
     }),
