@@ -12,6 +12,7 @@ afterAll(() => {
 
 afterEach(() => {
   jest.clearAllMocks()
+  // counteracts jest.useFakeTimers
   jest.useRealTimers()
 })
 
@@ -19,6 +20,7 @@ test('does not attempt to set state when unmounted (to prevent memory leaks)', (
   jest.useFakeTimers()
   const {unmount} = render(<Countdown />)
   unmount()
+  // use act when using jest fake timers
   act(() => jest.runOnlyPendingTimers())
   expect(console.error).not.toHaveBeenCalled()
 })
