@@ -23,3 +23,17 @@ Cypress Testing Library
 - this adds `findByText` and other testing library commands
 - cant use `getBy` as it is synchronous
 - can pass regex to queries
+
+Cypress Scripts
+- `"test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",`
+  - uses is-ci to run different scripts depending on env
+```
+"cy:run": "cypress run",
+"cy:open": "cypress open",
+"test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
+"pretest:e2e:run": "npm run build",
+"test:e2e:run": "start-server-and-test start http://localhost:8080 cy:run",
+"test:e2e:dev": "start-server-and-test dev http://localhost:8080 cy:open",
+```
+- pretest automatically runs before test
+- add cypress to CI (travis.yml)
