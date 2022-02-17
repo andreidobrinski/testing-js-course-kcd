@@ -13,6 +13,8 @@ test('Can fill out a form across multiple pages', async () => {
   const testData = {food: 'test food', drink: 'test drink'}
   render(<App />)
 
+  // prefer findBy as it provides resiliency against async events
+  // especially if the app behaviour changes
   fireEvent.click(await screen.findByText(/fill.*form/i))
 
   fireEvent.change(await screen.findByLabelText(/food/i), {
