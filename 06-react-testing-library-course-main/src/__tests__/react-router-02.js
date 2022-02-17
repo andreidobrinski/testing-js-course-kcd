@@ -17,6 +17,7 @@ test('main renders about and home and I can navigate to those pages', () => {
 })
 
 test('landing on a bad page shows no match component', () => {
+  // intentionally push to a route that does not match
   window.history.pushState({}, 'Test page', '/something-that-does-not-match')
   render(
     <BrowserRouter>
