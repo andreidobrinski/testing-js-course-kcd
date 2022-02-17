@@ -17,3 +17,9 @@ Cypress.json
 "viewportWidth": 400
 ```
 - viewport is configurable
+
+Cypress Testing Library
+- install `@testing-library/cypress/add-commands`
+- this adds `findByText` and other testing library commands
+- cant use `getBy` as it is synchronous
+- can pass regex to queries
