@@ -18,6 +18,7 @@ test('can render with redux with defaults', () => {
 })
 
 test('can render with redux with custom initial state', () => {
+  // create mock store for test
   const store = createStore(reducer, {count: 3})
   render(
     <Provider store={store}>
