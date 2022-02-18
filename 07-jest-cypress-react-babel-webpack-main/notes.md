@@ -51,3 +51,13 @@ if (window.Cypress) {
   // above exposes the functions/variables in the browser console
 }
 ```
+
+Cypress Simulate HTTP requests
+```
+cy.server().route({
+  method: 'POST',
+  url: 'url-here'
+  status: 500,
+  response: {}
+})
+```
