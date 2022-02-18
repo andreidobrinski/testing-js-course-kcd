@@ -61,3 +61,13 @@ cy.server().route({
   response: {}
 })
 ```
+
+Cypress API calls
+```
+const user = buildUser()
+cy.request({
+  url: 'url',
+  method: 'POST',
+  body: user,
+})
+```
