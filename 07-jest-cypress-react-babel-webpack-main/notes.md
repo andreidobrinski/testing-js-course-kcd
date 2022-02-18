@@ -37,3 +37,17 @@ Cypress Scripts
 ```
 - pretest automatically runs before test
 - add cypress to CI (travis.yml)
+
+Cypress Debug
+- `.then(thing => { debugger; return thing })`
+- `.debug()`
+- `.pause()` (resume in the cypress window)
+- in the app code:
+```
+if (window.Cypress) {
+  debugger;
+  window.theme = theme;
+  window.setTheme = setTheme;
+  // above exposes the functions/variables in the browser console
+}
+```
