@@ -71,3 +71,15 @@ cy.request({
   body: user,
 })
 ```
+
+Cypress Devtools
+- install React devtools extension in cyress browser
+- in index.html add:
+```
+<script>
+  if (window.Cypress) {
+    window.__REACT_DEVTOOLS_GLOBAL_HOOK =
+      window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK
+  }
+</script>
+```
