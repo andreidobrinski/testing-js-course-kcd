@@ -1,5 +1,6 @@
 describe('login', () => {
   it('should login an existing user', () => {
+    // uses custom create user fn. user object can be used in test
     cy.createUser().then(user => {
       cy.visit('/')
       cy.findByText(/login/i).click()

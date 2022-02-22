@@ -1,5 +1,6 @@
 import {userBuilder} from './generate'
 
+// adds custom cypress command
 Cypress.Commands.add('createUser', overrides => {
   const user = userBuilder(overrides)
   return cy
