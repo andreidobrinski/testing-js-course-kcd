@@ -31,6 +31,7 @@ Cypress.Commands.add('loginAsNewUser', () => {
   })
 })
 
+// custom assert commands
 Cypress.Commands.add('assertHome', () => {
   cy.url().should('eq', `${Cypress.config().baseUrl}/`)
 })
