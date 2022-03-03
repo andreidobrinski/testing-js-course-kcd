@@ -37,3 +37,22 @@ test('getListItem returns the req.listItem', async () => {
   })
   expect(res.json).toHaveBeenCalledTimes(1)
 })
+
+test('createListItem returns a 400 error if no bookId is provided', async () => {
+  const req = buildReq()
+  const res = buildRes()
+
+  await listItemsController.createListItem(req, res)
+
+  expect(res.status).toHaveBeenCalledWith(400)
+  expect(res.status).toHaveBeenCalledTimes(1)
+  expect(res.json).toHaveBeenCalledWith({ message: 'No bookId provided' })
+  // above is the same as
+  expect(res.json.mock[0][0]).toEqual({ message: 'No bookId provided' })
+  // also the same as
+  expect(res.json.mock.calls[0]).toMatchInlineSnapshot(`
+    // snapshot generated
+  `)
+  // above is useful for error messages
+  expect(res.json).toHaveBeenCalledTimes(1)
+})
