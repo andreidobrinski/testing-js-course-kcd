@@ -1,5 +1,6 @@
 // Testing Pure Functions
 
+import cases from 'jest-in-case'
 import {isPasswordAllowed} from '../auth'
 
 // 🐨 write tests for valid and invalid passwords
@@ -57,3 +58,44 @@ describe('isPasswordAllowed only allows some passwords', () => {
     })
   })
 })
+
+// Solution 3: jest-in-case
+
+cases(
+  'isPasswordAllowed: valid passwords',
+  (options) => {
+    expect(isPasswordAllowed(options.password)).toBe(true)
+  },
+  {
+    'validPassword': {
+      password: '!aBc123'
+    }
+  }
+)
+
+cases(
+  'isPasswordAllowed: invalid passwords',
+  (options) => {
+    expect(isPasswordAllowed(options.password)).toBe(false)
+  },
+  {
+    'too short': {
+      password: 'a2c!',
+    },
+    'no letters': {
+      password: '123456!',
+    },
+    'no numbers': {
+      password: 'ABCdef!',
+    },
+    'no uppercase letters': {
+      password: 'abc123!',
+    },
+    'no lowercase letters': {
+      password: 'ABC123!',
+    },
+    'no non-alphanumeric characters': {
+      password: 'ABCdef123',
+    },
+  }
+)
