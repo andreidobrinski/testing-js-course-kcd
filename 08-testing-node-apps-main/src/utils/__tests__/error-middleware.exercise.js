@@ -45,3 +45,20 @@ test('calls next if headersSent is true', () => {
 })
 
 // 🐨 Write a test for the else case (responds with a 500)
+test('responds with a 500 and the error object', () => {
+  const error = new Error('test')
+  const res = { json: jest.fn(() => res), status: jest.fn(() => res) }
+  const req = {}
+  const next = jest.fn()
+
+  errorMiddleware(error, req, res, next)
+
+  expect(next).not.toHaveBeenCalled()
+  expect(res.status).toHaveBeenCalledWith(500)
+  expect(res.status).toHaveBeenCalledTimes(1)
+  expect(res.json).toHaveBeenCalledWith({
+    message: error.message,
+    stack: error.stack,
+  })
+  expect(res.json).toHaveBeenCalledTimes(1)
+})
