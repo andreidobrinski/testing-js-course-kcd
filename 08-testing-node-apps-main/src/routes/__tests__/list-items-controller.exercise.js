@@ -115,3 +115,37 @@ test('setListItem returns a 404 error if the list item does not exist', async ()
   `)
   expect(res.json).toHaveBeenCalledTimes(1)
 })
+
+test('setListItem returns a 403 error if the list item does not belong to the user', async () => {
+  const user = buildUser({
+    id: 'fake_user_id'
+  })
+  const listItem = buildListItem({
+    ownerId: 'someone_else',
+    id: 'fake_list_item_id'
+  })
+
+  listItemsDB.readById.mockResolvedValueOnce(listItem)
+
+  const req = buildReq({
+    user,
+    params: {
+      id: listItem.id
+    }
+  })
+  const res = buildRes()
+
+  await listItemsController.setListItem(req, res)
+
+  expect(listItemsDB.readById).toHaveBeenCalledWith(listItem.id)
+  expect(listItemsDB.readById).toHaveBeenCalledTimes(1)
+
+  expect(next).not.toHaveBeenCalled()
+
+  expect(res.status).toHaveBeenCalledWith(403)
+  expect(res.status).toHaveBeenCalledTimes(1)
+  expect(res.json.mock.calls[0]).toMatchInlineSnapshot(`
+    // snapshot gets generated here
+  `)
+  expect(res.json).toHaveBeenCalledTimes(1)
+})
