@@ -19,9 +19,11 @@ beforeEach(() => {
   resetDb()
 })
 
+const baseURL = 'http://localhost:8000/api/'
+
 test('auth flow', async () => {
   const { username, password } = generate.loginForm()
-  const rResult = await axios.post('http://localhost:8000/api/auth/register', {
+  const rResult = await axios.post(`${baseURL}auth/register`, {
     username,
     password
   })
@@ -32,14 +34,14 @@ test('auth flow', async () => {
     username,
   })
 
-  const lResult = await axios.post('http://localhost:8000/api/auth/login', {
+  const lResult = await axios.post(`${baseURL}auth/login`, {
     username,
     password
   })
 
   expect(lResult.data.user).toEqual(rResult.data.user)
   
-  const mResult = await axios.get('http://localhost:8000/api/auth/me', {
+  const mResult = await axios.get(`${baseURL}auth/me`, {
     headers: {
       Authorization: `Bearer ${lResult.data.user.token}`
     }
