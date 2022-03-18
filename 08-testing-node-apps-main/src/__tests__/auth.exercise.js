@@ -4,7 +4,7 @@ import axios from 'axios'
 import {resetDb} from 'utils/db-utils'
 import * as generate from 'utils/generate'
 import startServer from '../start'
-import { handleRequestFailure, getData } from 'utils/async'
+import { handleRequestFailure, getData, resolve } from 'utils/async'
 
 let server, api
 
@@ -50,4 +50,26 @@ test('auth flow', async () => {
   })
 
   expect(mData.user).toEqual(lData.user)
+})
+
+test('username must be unique', async () => {
+  const { username, password } = generate.loginForm()
+
+  // do initial register
+  await api.post('auth/register', {
+    username,
+    password
+  })
+
+  // do repeat register
+  const error = await api.post('auth/register', {
+    username,
+    password
+  }).catch(resolve)
+  // same as doing this:
+  // }).catch((result) => result)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshow ends up here
+  )
 })
