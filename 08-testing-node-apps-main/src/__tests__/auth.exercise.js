@@ -28,6 +28,9 @@ test('auth flow', async () => {
   const rResult = await api.post('auth/register', {
     username,
     password
+  }).catch(result => {
+    console.log(result.response.data)
+    throw new Error(`${result.response.status}: ${JSON.stringify(result.response.data)}`)
   })
   
   expect(rResult.data.user).toEqual({
