@@ -8,6 +8,7 @@ import { handleRequestFailure, getData } from 'utils/async'
 
 let server
 const port = 8000 + Number(process.env.JEST_WORKER_ID)
+process.env.PORT = port
 
 beforeAll(async () => {
   server = await startServer({port})
