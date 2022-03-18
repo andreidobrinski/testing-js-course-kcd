@@ -4,7 +4,7 @@ import axios from 'axios'
 import {resetDb} from 'utils/db-utils'
 import * as generate from 'utils/generate'
 import startServer from '../start'
-import { handleRequestFailure } from 'utils/async'
+import { handleRequestFailure, getData } from 'utils/async'
 
 let server
 
@@ -23,10 +23,7 @@ beforeEach(() => {
 const baseURL = 'http://localhost:8000/api'
 
 const api = axios.create({ baseURL })
-api.interceptors.response.use(
-  function onSuccess(response) {
-  return response.data
-}, handleRequestFailure)
+api.interceptors.response.use(getData, handleRequestFailure)
 
 test('auth flow', async () => {
   const { username, password } = generate.loginForm()
