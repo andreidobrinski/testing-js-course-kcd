@@ -6,10 +6,13 @@ import * as generate from 'utils/generate'
 import startServer from '../start'
 import { handleRequestFailure, getData } from 'utils/async'
 
-let server
+let server, api
 
 beforeAll(async () => {
   server = await startServer()
+  const baseURL = `http://localhost:${server.address().port}/api`
+  api = axios.create({ baseURL })
+  api.interceptors.response.use(getData, handleRequestFailure)
 })
 
 afterAll(async () => {
@@ -19,11 +22,6 @@ afterAll(async () => {
 beforeEach(() => {
   resetDb()
 })
-
-const baseURL = `http://localhost:${process.env.PORT}/api`
-
-const api = axios.create({ baseURL })
-api.interceptors.response.use(getData, handleRequestFailure)
 
 test('auth flow', async () => {
   const { username, password } = generate.loginForm()
