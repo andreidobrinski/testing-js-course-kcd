@@ -7,9 +7,10 @@ import startServer from '../start'
 import { handleRequestFailure, getData } from 'utils/async'
 
 let server
+const port = 8000 + Number(process.env.JEST_WORKER_ID)
 
 beforeAll(async () => {
-  server = await startServer({port: 8000})
+  server = await startServer({port})
 })
 
 afterAll(async () => {
@@ -20,7 +21,7 @@ beforeEach(() => {
   resetDb()
 })
 
-const baseURL = 'http://localhost:8000/api'
+const baseURL = `http://localhost:${port}/api`
 
 const api = axios.create({ baseURL })
 api.interceptors.response.use(getData, handleRequestFailure)
