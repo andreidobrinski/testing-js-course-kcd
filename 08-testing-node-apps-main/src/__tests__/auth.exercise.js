@@ -69,3 +69,51 @@ test('username must be unique', async () => {
     // snapshow ends up here
   )
 })
+
+test('get me unauthenticated returns error', async () => {
+  const error = await api.get('auth/me').catch(resolve)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshot
+  )
+})
+
+test('username required to register', async () => {
+  const error = await api.post('auth/register', { password: generate.password() }).catch(resolve)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshot
+  )
+})
+
+test('password required to register', async () => {
+  const error = await api.post('auth/register', { username: generate.username() }).catch(resolve)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshot
+  )
+})
+
+test('username required to login', async () => {
+  const error = await api.post('auth/login', { password: generate.password() }).catch(resolve)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshot
+  )
+})
+
+test('password required to login', async () => {
+  const error = await api.post('auth/login', { username: generate.username() }).catch(resolve)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshot
+  )
+})
+
+test('user must exist to login', async () => {
+  const error = await api.post('auth/login', generate.loginForm({ username: 'does_not_exist' })).catch(resolve)
+
+  expect(error).toMatchInlineSnapshot(
+    // snapshot
+  )
+})
