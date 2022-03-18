@@ -5,6 +5,7 @@ import {resetDb} from 'utils/db-utils'
 import * as generate from 'utils/generate'
 import startServer from '../start'
 import { handleRequestFailure, getData, resolve } from 'utils/async'
+import * as usersDB from '../db/users'
 
 let server, api
 
@@ -54,12 +55,7 @@ test('auth flow', async () => {
 
 test('username must be unique', async () => {
   const { username, password } = generate.loginForm()
-
-  // do initial register
-  await api.post('auth/register', {
-    username,
-    password
-  })
+  await usersDB.insert(generate.buildUser({ username }))
 
   // do repeat register
   const error = await api.post('auth/register', {
