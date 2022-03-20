@@ -87,9 +87,17 @@ test('listItem CRUD', async () => {
   // 🐨 assert that the status is 404 and the error.data is correct
   expect(error).not.toEqual(uData)
   expect(error.status).toBe(404)
+
+  // instead of hardcoding the error msg:
   expect(error.data).toEqual({
     message: `No list item was found with the id of ${listItemId}`
   })
+
+  // use a snapshot. replace generated id with constant string
+  const idlessMessage = error.data.message.replace(listItemId, 'list_item_id')
+  expect(error.data.message).toMatchInlineSnapshot(
+    // snapshot
+  )
 })
 
 /* eslint no-unused-vars:0 */
